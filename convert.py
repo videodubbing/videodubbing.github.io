@@ -24,14 +24,17 @@ def convert_video(input_file, output_file):
         print("An error occurred during conversion.")
 
 
-video_files  = glob.glob(os.path.join("./static/speaker/*/*.mp4"))
-output_dir = "./static/speaker_"
+video_files  = glob.glob(os.path.join("./static/comparison/*/*.mp4"))
+output_dir = "./static/comparison"
 os.makedirs(output_dir,exist_ok=True)
 
 for vv in video_files:
     dir_name = vv.split("/")[-2]
+    if not dir_name=="eVFYhbHpfqU_00003_00002": continue
+
+
     file_name = vv.split("/")[-1]
-    output_path = os.path.join(output_dir, dir_name,file_name)
+    output_path = os.path.join(output_dir, dir_name,"1"+file_name)
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     # Call the function to convert the video
     convert_video(vv, output_path)
